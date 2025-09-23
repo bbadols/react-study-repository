@@ -1,6 +1,7 @@
 import React from "react";
 import { MessageContext } from "./contexts/MessageContext";
 import ComponentA from "./components/ComponentA";
+import ComponentB from "./components/ComponentB";
 
 const App = () => {
   const sharedMessage = "Hello React Context, MessageContext Provider내의 모든 컴포넌트들이 자원을 공유함";
@@ -15,6 +16,7 @@ const App = () => {
       */}
       <MessageContext.Provider value={sharedMessage}>
         <ComponentA />
+        <ComponentB />
       </MessageContext.Provider>
     </div>
   );
