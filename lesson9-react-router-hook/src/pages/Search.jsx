@@ -17,12 +17,12 @@ const Search = () => {
   // - hash: 해시 (#section)
   // - state: navigate로 전달된 state
   const location = useLocation();
-  // URLSearchParams로 쿼리 파라미터를 변환(parsing)
+  // URLSearchParams로 쿼리 파라미터 변환(parsing)
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("q");
 
   const handleSearch = (e) => {
-    e.preventDefult();
+    e.preventDefault();
     navigate(`/search?q=${keyword}`);
   };
 
@@ -33,19 +33,27 @@ const Search = () => {
       {/* 현재 location 정보 표시 */}
       <div className="info-box">
         <p>
-          <strong>pathname:</strong> {location.pathname}
+          <strong>pathname:</strong>
+          {location.pathname}
         </p>
         <p>
-          <strong>search:</strong> {location.search || "없음"}
+          <strong>search:</strong>
+          {location.search || "없음"}
         </p>
         <p>
-          <strong>검색어:</strong>  {searchQuery || "없음"}
+          <strong>검색어:</strong>
+          {searchQuery || "없음"}
         </p>
       </div>
 
       <form onSubmit={handleSearch}>
-        <input type="text" placeholder="검색어를 입력하세요" 
-          value={keyword} onChange={(e)=>{setKeyword(e.target.value)}}
+        <input
+          type="text"
+          placeholder="검색어를 입력하세요"
+          value={keyword}
+          onChange={(e) => {
+            setKeyword(e.target.value);
+          }}
         />
         <button type="submit">검색</button>
       </form>
@@ -53,7 +61,7 @@ const Search = () => {
       {searchQuery && (
         <div className="search-result">
           <h3>{searchQuery} 검색 결과</h3>
-          실제로는 
+          실제로는 ajax axios 통신으로 정보를 조회해옴
         </div>
       )}
     </div>
